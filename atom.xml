@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://jiejiecool.github.io</id>
+    <id>https://jiejiecool.github.io</id>
     <title>jiejiecool</title>
-    <updated>2020-09-25T16:00:20.573Z</updated>
+    <updated>2020-09-25T16:01:11.580Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://jiejiecool.github.io"/>
-    <link rel="self" href="http://jiejiecool.github.io/atom.xml"/>
+    <link rel="alternate" href="https://jiejiecool.github.io"/>
+    <link rel="self" href="https://jiejiecool.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://jiejiecool.github.io/images/avatar.png</logo>
-    <icon>http://jiejiecool.github.io/favicon.ico</icon>
+    <logo>https://jiejiecool.github.io/images/avatar.png</logo>
+    <icon>https://jiejiecool.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, jiejiecool</rights>
     <entry>
         <title type="html"><![CDATA[测试]]></title>
-        <id>http://jiejiecool.github.io/post/ce-shi/</id>
-        <link href="http://jiejiecool.github.io/post/ce-shi/">
+        <id>https://jiejiecool.github.io/post/ce-shi/</id>
+        <link href="https://jiejiecool.github.io/post/ce-shi/">
         </link>
         <updated>2020-09-10T17:07:22.000Z</updated>
         <content type="html"><![CDATA[<h2 id="132">132</h2>
