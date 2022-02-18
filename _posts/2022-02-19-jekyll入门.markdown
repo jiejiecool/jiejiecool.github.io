@@ -1,0 +1,151 @@
+---
+layout: post
+title:  "Jekyll入门"
+date:   2022-02-19 00:40:09 +0800
+categories: 博客搭建 jekyll入门
+---
+
+**使用jekyll搭建静态博客的核心概念及基本使用**
+
+# 核心概念
+
+## `front matter`
+
+    直接翻译为前言。 可以理解为定义的属性
+
+* 定义时使用两行`---`代表属性的开始和结束, 内部使用yaml格式定义属性值
+
+```txt
+    ---
+    name: jiejiecool
+    age: 29
+    ---
+```
+
+* 使用时`{{page.name}}` 将被渲染为`jiejiecool`
+
+## `liquid`
+
+    可以理解为jekyll的语法，语法有以下三种类型
+
+* `objects`
+        理解为占位符即可
+        eg: `{{page.name}}`
+
+* `tags`
+        理解为条件判断语句
+        eg:
+
+```txt
+    {% if page.show_sidebar%}
+            <div class="sidebar">
+            sidebar content
+        </div>
+    {% endif %}
+```
+
+* `filters`
+
+    理解为java的stream操作
+
+    eg: `{{ "hi" | capitalize }}` 渲染时会将 `hi` 转换为大写 `HI`
+
+## `layout`
+
+翻译为布局，为了解决每个markdown文件写相同的头尾样式而生。
+
+类似于js的头和尾的js引用
+
+使用方法:
+
+* 创建布局
+
+    创建目录 `_layouts`, 创建名称为 `default.html` 的文件, 内容如下
+
+```html
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ page.title }}</title>
+    </head>
+    <body>
+        {{ content }}
+    </body>
+    </html>
+```
+
+* 使用布局
+
+    在命名为 `blog1.md` 的文件中使用该布局
+
+```txt
+    ---
+    layout: default
+    title: About
+    ---
+
+    # About page
+
+    This page tells you a little bit about me.
+```
+
+## `blogging`
+
+通过文件的形式生成blog
+
+### 文件详情
+
+创建名为 `_posts` 的目录，创建名为 `2022-01-01-blog1.md` 的博客文件
+
+```txt
+---
+layout: post
+author: jill
+---
+A banana is an edible fruit – botanically a berry – produced by several kinds
+of large herbaceous flowering plants in the genus Musa.
+
+In some countries, bananas used for cooking may be called "plantains",
+distinguishing them from dessert bananas. The fruit is variable in size, color,
+and firmness, but is usually elongated and curved, with soft flesh rich in
+starch covered with a rind, which may be green, yellow, red, purple, or brown
+when ripe.
+```
+
+在 `_layouts` 目录中创建名为 `post.html` 的布局设置文件
+
+```html
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<p>{{ page.date | date_to_string }} - {{ page.author }}</p>
+
+{{ content }}
+```
+
+### 文件列表
+
+在根目录下创建 `/blog.html` 文件
+
+```html
+---
+layout: default
+title: Blog
+---
+<h1>Latest Posts</h1>
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      {{ post.excerpt }}
+    </li>
+  {% endfor %}
+</ul>
+```
+
+* `post.url` 是jekyll自动生成
+* `post.title` 是通过文件名或者文件内容中的title来决定
+* `post.excerpt` 是文件 `content` 的第一段，也就是摘要，所以写 `blog` 时记得优先写摘要
